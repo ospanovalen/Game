@@ -1,31 +1,20 @@
 from pygame import *
+from Globals import *
+from Labels import TimeLabel, HealthLabel
+from Enemies import EnemyFabric
+from Player import Player
 from math import atan2, pi
-from Main_Classes import Player, EnemyFabric, TimeLabel, HealthLabel
 from random import randint
 
-init()
 
 # set initial settings
-display.set_caption("Defender")
-
-# define constants
-WIDTH = 1300
-HEIGHT = 1000
-FONT = font.SysFont('Courier', 16, 1, 0)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
-
+display.set_caption("Tower Defence")
 screen = display.set_mode((WIDTH, HEIGHT))
 
 # define main objects
 player = Player(100, 100)
 timeLabel = TimeLabel(FONT, BLUE, GREEN, 5, HEIGHT - 32)
 healthLabel = HealthLabel(FONT, BLUE, RED, 5, HEIGHT - 16)
-
-# set images
-Texture_Image = image.load('Objects/Textura.png')
-Base_Image = image.load('Objects/object1.png')
 
 Bullets_List = []
 Enemies_List = []
@@ -34,7 +23,6 @@ Health_Points = 100
 Bullets_Limit = 2
 Speed = 5
 
-FPS = time.Clock()
 Running = True
 
 Keys_Dict = {'up': False, 'down': False, 'left': False, 'right': False}
@@ -44,7 +32,11 @@ while Running:
     # fill screen with background image
     for x in range(WIDTH // Texture_Image.get_width() + 1):
         for y in range(HEIGHT // Texture_Image.get_height() + 1):
-            screen.blit(Texture_Image, (x * Texture_Image.get_width(), y * Texture_Image.get_height()))
+            screen.blit(
+                Texture_Image,
+                (x * Texture_Image.get_width(),
+                 y * Texture_Image.get_height())
+            )
 
     # generate base image
     for y in range(HEIGHT % Base_Image.get_height() // 2,
