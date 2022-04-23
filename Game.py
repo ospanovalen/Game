@@ -25,8 +25,8 @@ class Game:
         enemies_list = []
         enemy_delay = 100
         bullets_limit = 2
-        speed = 5
-        damage = 100
+        speed = 6
+        damage = 5
         state = Gv.START_MENU
 
         keys_dict = {'up': False, 'down': False, 'left': False, 'right': False}
@@ -75,13 +75,13 @@ class Game:
             if state == Gv.GAME:
                 if start_menu.is_active:
                     start_menu.is_active = False
+                    health_points = 100
                 if lose_menu.is_active:
                     lose_menu.is_active = False
+                    health_points = 100
 
                 Mf.fill_background()
                 Mf.generate_base()
-
-                health_points = 100
 
                 # player rotation
                 angle_radian = atan2(mouse_pos['y'] - player.pos_y,
