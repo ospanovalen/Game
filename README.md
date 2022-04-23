@@ -1,5 +1,6 @@
-to start the game do the following:
+#to start the game do the following:
 
-git clone https://github.com/ospanovalen/Game.git
-pip install -r requirements.txt
-python3 main.py
+<h3>git clone https://github.com/ospanovalen/Game.git</h3>
+<h3>cd Game</h3>
+<h3>pip install -r requirements.txt</h3>
+<h3>python3 main.py</h3>
