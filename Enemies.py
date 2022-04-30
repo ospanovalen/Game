@@ -13,7 +13,7 @@ class Enemy:
     def move(self, speed):
         self.pos_x -= speed
 
-    def update(self):
+    def draw(self):
         Gv.SCREEN.blit(self.rotation, (self.pos_x, self.pos_y))
 
 

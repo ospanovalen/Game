@@ -11,6 +11,9 @@ class Label:
         self.color_font = color_font
         self.img = self.font.render('', True, color_back, color_font)
 
+    def draw(self):
+        Gv.SCREEN.blit(self.img, (self.pos_x, self.pos_y))
+
 
 class TimeLabel(Label):
     def update(self):
@@ -21,7 +24,6 @@ class TimeLabel(Label):
             self.color_font,
             self.color_back
         )
-        Gv.SCREEN.blit(self.img, (self.pos_x, self.pos_y))
 
 
 class HealthLabel(Label):
@@ -32,4 +34,4 @@ class HealthLabel(Label):
             self.color_font,
             self.color_back
         )
-        Gv.SCREEN.blit(self.img, (self.pos_x, self.pos_y))
+

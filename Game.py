@@ -8,6 +8,7 @@ from random import randint
 import Main_Functions as Mf
 from Start_Menu import StartMenu
 from Lose_Menu import LoseMenu
+from Drawer import Drawer
 
 
 class Game:
@@ -34,6 +35,8 @@ class Game:
 
         start_menu = StartMenu()
         lose_menu = LoseMenu()
+
+        drawer = Drawer(player, enemies_list, bullets_list, health_label, time_label)
 
         running = True
 
@@ -80,9 +83,6 @@ class Game:
                     lose_menu.is_active = False
                     health_points = 100
 
-                Mf.fill_background()
-                Mf.generate_base()
-
                 # player rotation
                 angle_radian = atan2(mouse_pos['y'] - player.pos_y,
                                      mouse_pos['x'] - player.pos_x)
@@ -96,7 +96,6 @@ class Game:
                 # bullets movement
                 for bullet in bullets_list:
                     bullet.move(speed * 2)
-                    bullet.update()
 
                     if (bullet.pos_x < 0 or bullet.pos_x > Gv.WIDTH or
                             bullet.pos_y < 0 or bullet.pos_y > Gv.HEIGHT):
@@ -113,7 +112,6 @@ class Game:
                 for enemy in enemies_list:
                     # enemy movement
                     enemy.move(speed)
-                    enemy.update()
 
                     # enemy beat the base
                     if enemy.pos_x < 0 + Gi.Base_Image.get_width() // 2:
@@ -135,9 +133,10 @@ class Game:
                             enemies_list.remove(enemy)
                             bullets_list.remove(bullet)
 
-                player.update()
                 time_label.update()
                 health_label.update(health_points)
+
+                drawer.draw_all()
 
             elif state == Gv.START_MENU:
                 if not start_menu.is_active:

@@ -30,7 +30,7 @@ class Player:
         elif keys_dict['down'] and self.pos_y < Gv.HEIGHT:
             self.move_v(speed)
 
-    def update(self):
+    def draw(self):
         Gv.SCREEN.blit(self.rotation, (self.pos_x, self.pos_y))
 
     def shoot(self, bullets_list: list, bullets_limit: int, angle):

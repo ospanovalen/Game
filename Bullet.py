@@ -15,5 +15,5 @@ class Bullet:
         self.pos_x += cos(self.angle) * speed
         self.pos_y += sin(self.angle) * speed
 
-    def update(self):
+    def draw(self):
         Gv.SCREEN.blit(self.rotation, (self.pos_x, self.pos_y))
