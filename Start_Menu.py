@@ -8,21 +8,27 @@ class StartMenu:
         self.is_active = False
         self.pos_x = 0
         self.pos_y = 0
-        self.size_x = Gv.WIDTH
-        self.size_y = Gv.HEIGHT
-        ei = pygame.transform.scale(Gi.Exit_Image, (self.size_x // 4, self.size_y // 4))
-        si = pygame.transform.scale(Gi.Start_Image, (self.size_x // 4, self.size_y // 4))
-        self.start_game_button = Button(self.pos_x + self.size_x // 2 - si.get_width() / 2,
+        self.size_x = Gv.width
+        self.size_y = Gv.height
+        ei = pygame.transform.scale(Gi.exit_image, (self.size_x // 6, self.size_y // 6))
+        si = pygame.transform.scale(Gi.single_player_image, (self.size_x // 8, self.size_y // 5))
+        mi = pygame.transform.scale(Gi.multi_player_image, (self.size_x // 8, self.size_y // 5))
+        self.start_game_button = Button(self.pos_x + self.size_x // 3 - si.get_width() / 2,
                                         self.pos_y + self.size_y // 3,
                                         si
                                         )
-        self.quit_game_button = Button(self.pos_x + self.size_x // 2 - ei.get_width() / 2,
-                                       self.pos_y + self.size_y * 2 // 3,
+        self.start_multiplayer_game_button = Button(self.pos_x + self.size_x * 2 // 3 - si.get_width() / 2,
+                                                    self.pos_y + self.size_y // 3,
+                                                    mi
+                                                    )
+        self.quit_game_button = Button(self.pos_x + self.size_x // 1.15 - ei.get_width() / 5,
+                                       self.pos_y + self.size_y * 5 // 6,
                                        ei
                                        )
-        self.background = pygame.transform.scale(Gi.Background_Image, (self.size_x, self.size_y))
+        self.background = pygame.transform.scale(Gi.background_image, (self.size_x, self.size_y))
 
     def draw(self):
-        Gv.SCREEN.blit(self.background, (self.pos_x, self.pos_y))
+        Gv.screen.blit(self.background, (self.pos_x, self.pos_y))
         self.start_game_button.draw()
+        self.start_multiplayer_game_button.draw()
         self.quit_game_button.draw()

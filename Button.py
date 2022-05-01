@@ -8,4 +8,4 @@ class Button:
         self.img = img
 
     def draw(self):
-        Gi.SCREEN.blit(self.img, (self.pos_x, self.pos_y))
+        Gi.screen.blit(self.img, (self.pos_x, self.pos_y))

@@ -4,7 +4,7 @@ from Globals import GlobalsVar as Gv, GlobalsImg as Gi
 
 class Enemy:
     def __init__(self, start_pos_x: int, start_pos_y: int, damage: int):
-        self.img = Gi.Enemy_Image
+        self.img = Gi.enemy_image
         self.pos_x = start_pos_x
         self.pos_y = start_pos_y
         self.rotation = pygame.transform.rotate(self.img, 0)
@@ -13,8 +13,8 @@ class Enemy:
     def move(self, speed):
         self.pos_x -= speed
 
-    def update(self):
-        Gv.SCREEN.blit(self.rotation, (self.pos_x, self.pos_y))
+    def draw(self):
+        Gv.screen.blit(self.rotation, (self.pos_x, self.pos_y))
 
 
 class EnemyFabric:
