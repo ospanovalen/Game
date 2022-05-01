@@ -1,4 +1,4 @@
-#to start the game do the following:
+#To start the game do the following:
 
 <h3>git clone https://github.com/ospanovalen/Game.git</h3>
 <h3>cd Game</h3>
