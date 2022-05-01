@@ -12,7 +12,7 @@ class Label:
         self.img = self.font.render('', True, color_back, color_font)
 
     def draw(self):
-        Gv.SCREEN.blit(self.img, (self.pos_x, self.pos_y))
+        Gv.screen.blit(self.img, (self.pos_x, self.pos_y))
 
 
 class TimeLabel(Label):
