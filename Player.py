@@ -1,26 +1,38 @@
-from Bullet import *
-from Globals import Player_Image
+import pygame
+from Bullet import Bullet
+from Globals import GlobalsVar as Gv, GlobalsImg as Gi
 
 
 class Player:
     def __init__(self, start_pos_x: int, start_pos_y: int):
-        self.img = Player_Image
-        self.posX = start_pos_x
-        self.posY = start_pos_y
-        self.rotation = transform.rotate(self.img, 0)
+        self.img = Gi.Player_Image
+        self.pos_x = start_pos_x
+        self.pos_y = start_pos_y
+        self.rotation = pygame.transform.rotate(self.img, 0)
 
     def rotate(self, angle: float):
-        self.rotation = transform.rotate(self.img, 360 - angle)
+        self.rotation = pygame.transform.rotate(self.img, 360 - angle)
 
     def move_h(self, speed):
-        self.posX += speed
+        self.pos_x += speed
 
     def move_v(self, speed):
-        self.posY += speed
+        self.pos_y += speed
 
-    def update(self, screen):
-        screen.blit(self.rotation, (self.posX, self.posY))
+    def move(self, speed: float, keys_dict: dict):
+        if keys_dict['right'] and self.pos_x < Gv.WIDTH:
+            self.move_h(speed)
+        elif keys_dict['left'] and self.pos_x > 0:
+            self.move_h(-speed)
+
+        if keys_dict['up'] and self.pos_y > 0:
+            self.move_v(-speed)
+        elif keys_dict['down'] and self.pos_y < Gv.HEIGHT:
+            self.move_v(speed)
+
+    def draw(self):
+        Gv.SCREEN.blit(self.rotation, (self.pos_x, self.pos_y))
 
     def shoot(self, bullets_list: list, bullets_limit: int, angle):
         if len(bullets_list) < bullets_limit:
-            bullets_list.append(Bullet(angle, self.posX, self.posY))
+            bullets_list.append(Bullet(angle, self.pos_x, self.pos_y))

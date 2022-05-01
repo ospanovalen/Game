@@ -1,8 +1,9 @@
-from pygame import *
+import pygame
+from Globals import GlobalsVar as Gv
 
 
 class Label:
-    def __init__(self, font_s: font, color_back, color_font, pos_x, pos_y):
+    def __init__(self, font_s: pygame.font, color_back, color_font, pos_x, pos_y):
         self.font = font_s
         self.pos_x = pos_x
         self.pos_y = pos_y
@@ -10,25 +11,27 @@ class Label:
         self.color_font = color_font
         self.img = self.font.render('', True, color_back, color_font)
 
+    def draw(self):
+        Gv.SCREEN.blit(self.img, (self.pos_x, self.pos_y))
+
 
 class TimeLabel(Label):
-    def update(self, screen):
+    def update(self):
         self.img = self.font.render(
             'Time: ' +
-            str(round((time.get_ticks() / 1000), 1)),
+            str(round((pygame.time.get_ticks() / 1000), 1)),
             True,
             self.color_font,
             self.color_back
         )
-        screen.blit(self.img, (self.pos_x, self.pos_y))
 
 
 class HealthLabel(Label):
-    def update(self, hp, screen):
+    def update(self, hp):
         self.img = self.font.render(
             'Health: ' + str(hp) + '%',
             True,
             self.color_font,
             self.color_back
         )
-        screen.blit(self.img, (self.pos_x, self.pos_y))
+
