@@ -6,29 +6,29 @@ from Globals import GlobalsVar as Gv, GlobalsImg as Gi
 class LoseMenu:
     def __init__(self):
         self.is_active = False
-        self.pos_x = 0
-        self.pos_y = 0
-        self.size_x = Gv.width
-        self.size_y = Gv.height
-        ri = pygame.transform.scale(Gi.restart_image, (self.size_x // 3, self.size_y // 5))
-        ei = pygame.transform.scale(Gi.exit_image, (self.size_x // 6, self.size_y // 6))
-        hi = pygame.transform.scale(Gi.home_image, (self.size_x // 5.8, self.size_y // 5.8))
-        self.restart_game_button = Button(self.pos_x + self.size_x // 3,
-                                          self.pos_y + self.size_y // 3,
+        self.pos_x = Gv.WIDTH // 10
+        self.pos_y = Gv.HEIGHT // 10
+        self.size_x = Gv.WIDTH * 8 // 10
+        self.size_y = Gv.HEIGHT * 8 // 10
+        ri = pygame.transform.scale(Gi.Restart_Image, (self.size_x * 9 // 10, self.size_y // 4))
+        ei = pygame.transform.scale(Gi.Exit_Image, (self.size_x // 3, self.size_y // 5))
+        hi = pygame.transform.scale(Gi.Home_Image, (self.size_x // 3, self.size_y // 5))
+        self.restart_game_button = Button(self.pos_x + self.size_x // 8,
+                                          self.pos_y + self.size_y // 2,
                                           ri
                                           )
-        self.quit_game_button = Button(self.pos_x + self.size_x // 1.15 - ei.get_width() / 5,
-                                       self.pos_y + self.size_y * 5 // 6,
+        self.quit_game_button = Button(self.pos_x + self.size_x * 7 // 8 - ei.get_width(),
+                                       self.pos_y + self.size_y * 3 // 4,
                                        ei
                                        )
-        self.home_button = Button(self.pos_x + self.size_x // 1.5,
-                                  self.pos_y + self.size_y * 4.8 // 5.8,
+        self.home_button = Button(self.pos_x + self.size_x // 8,
+                                  self.pos_y + self.size_y * 3 // 4,
                                   hi
                                   )
-        self.background = pygame.transform.scale(Gi.background_lose_image, (self.size_x, self.size_y))
+        self.background = pygame.transform.scale(Gi.Background_Lose_Image, (self.size_x, self.size_y))
 
     def draw(self):
-        Gv.screen.blit(self.background, (self.pos_x, self.pos_y))
+        Gv.SCREEN.blit(self.background, (self.pos_x, self.pos_y))
         self.restart_game_button.draw()
         self.quit_game_button.draw()
         self.home_button.draw()
