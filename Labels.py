@@ -15,6 +15,7 @@ class Label:
         Gv.screen.blit(self.img, (self.pos_x, self.pos_y))
 
 
+
 class TimeLabel(Label):
     def update(self):
         self.img = self.font.render(

@@ -195,7 +195,7 @@ class Game:
 
                 time_label.update()
                 health_label.update(health_points)
-
+                
                 drawer.draw_all(multiplayer)
 
             elif state == Gv.start_menu:
